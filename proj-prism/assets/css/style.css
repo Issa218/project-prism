@@ -1,0 +1,133 @@
+/* River Levels CSS */
+/* --------------------
+   GLOBAL
+--------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #f5f7fb;
+  margin: 0;
+  padding: 20px;
+  color: #222;
+}
+
+/* --------------------
+   HEADER
+--------------------- */
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h1 {
+  color: #8B6508;
+  border-bottom: 4px solid #8B6508;
+  padding-bottom: 5px;
+}
+
+/* --------------------
+   LEGEND
+--------------------- */
+.legend {
+  max-width: 1000px;
+  margin: 20px auto 30px;
+  background: white;
+  padding: 15px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 6px 0;
+  font-weight: 500;
+}
+
+.legend-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+}
+
+/* Legend colors */
+.very-low { background: #000; }
+.low { background: #1e3a8a; }
+.moderate { background: #16a34a; }
+.high { background: #eab308; }
+.flood { background: #dc2626; }
+
+/* --------------------
+   CARDS
+--------------------- */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  max-width: 1000px;
+  margin: 0 auto 30px;
+}
+
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card:focus {
+  outline: 3px solid #000;
+}
+
+.card h3 {
+  margin: 0 0 8px;
+}
+
+.level {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.status {
+  font-weight: bold;
+}
+
+/* Color borders */
+.card.very-low { border-left: 8px solid #000; }
+.card.low { border-left: 8px solid #1e3a8a; }
+.card.moderate { border-left: 8px solid #16a34a; }
+.card.high { border-left: 8px solid #eab308; }
+.card.flood { border-left: 8px solid #dc2626; }
+
+/* --------------------
+   CHART
+--------------------- */
+.chart-card {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.chart-container {
+  height: 400px;
+}
+
+/* River Levels CSS */
+
+
+

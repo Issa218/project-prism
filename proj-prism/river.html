@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>River Dashboard</title>
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+  <header class="header">
+    <h1>River Conditions Dashboard</h1>
+    <p>Select a river to view detailed trends</p>
+  </header>
+
+  <!-- Legend / Key -->
+  <section class="legend">
+    <h3>River Level Key</h3>
+
+    <div class="legend-item"><span class="legend-color very-low"></span> Very Low</div>
+    <div class="legend-item"><span class="legend-color low"></span> Low</div>
+    <div class="legend-item"><span class="legend-color moderate"></span> Moderate</div>
+    <div class="legend-item"><span class="legend-color high"></span> High</div>
+    <div class="legend-item"><span class="legend-color flood"></span> Flood Stage</div>
+  </section>
+
+  <!-- Cards -->
+  <section class="cards" id="cards"></section>
+
+  <!-- Chart -->
+  <section class="chart-card">
+    <h2 id="chartTitle">Select a River</h2>
+    <div class="chart-container">
+      <canvas id="riverChart"></canvas>
+    </div>
+  </section>
+
+  <script src="assets/js/scripts.js"></script>
+
+</body>
+</html>

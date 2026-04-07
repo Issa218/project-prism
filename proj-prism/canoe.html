@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canoe Rental Wireframe | Proof of Concept</title>
+</head>
+<body>
+
+  <h1>Nature's Elk Outfitters</h1>
+ <nav role="navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="canoe.html"> Canoe Rental</a></li>
+        <li><a href="cabin.html">Cabin Rental</a></li>
+        <li><a href="river.html">River Levels</a></li>
+      </ul>
+    </nav>
+
+    <header>
+        <h1>Canoe Rentals</h1>
+        <p><em>Book canoe's here</em></p>
+        <nav>
+            <ul>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#rentals">Canoes Avalible</a></li>
+                <li><a href="#booking">Book Now</a></li>
+                <li><a href="#river.html">River Water Levels</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+
+    <main>
+        <section id="about">
+            <h2>Explore the Current</h2>
+            <p>[Hero Image Placeholder: A scenic view of the river at dawn]</p>
+            <p>We provide high-quality canoes and gear for everyone from solo paddlers to families.</p>
+            <button type="button">View Availability</button>
+        </section>
+
+
+        <section id="rentals">
+            <h2>Our Fleet & Pricing</h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Canoe Type</th>
+                        <th>Capacity</th>
+                        <th>Hourly Rate</th>
+                        <th>Daily Rate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Solo Scout</td>
+                        <td>1 Person</td>
+                        <td>$15</td>
+                        <td>$50</td>
+                    </tr>
+                    <tr>
+                        <td>Tandem Traveler</td>
+                        <td>2 Persons</td>
+                        <td>$25</td>
+                        <td>$80</td>
+                    </tr>
+                    <tr>
+                        <td>Family Voyager</td>
+                        <td>3-4 Persons</td>
+                        <td>$35</td>
+                        <td>$110</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="booking">
+            <h2>Reserve Your Canoe</h2>
+            <form action="#" method="post">
+                <fieldset>
+                    <legend>Rental Information</legend>
+                    
+                    <label for="name">Full Name:</label><br>
+                    <input type="text" id="name" name="name" required><br><br>
+
+                    <label for="date">Rental Date:</label><br>
+                    <input type="date" id="date" name="date" required><br><br>
+
+                    <label for="canoe-type">Select Canoe:</label><br>
+                    <select id="canoe-type" name="canoe-type">
+                        <option value="solo">Solo Scout</option>
+                        <option value="tandem">Tandem Traveler</option>
+                        <option value="family">Family Voyager</option>
+                    </select><br><br>
+
+                    <label for="duration">Duration:</label><br>
+                    <input type="radio" id="hourly" name="duration" value="hourly">
+                    <label for="hourly">Hourly</label>
+                    <input type="radio" id="daily" name="duration" value="daily">
+                    <label for="daily">Full Day</label><br><br>
+
+                    <label for="comments">Special Requests:</label><br>
+                    <textarea id="comments" name="comments" rows="4" cols="30"></textarea><br><br>
+
+                    <input type="submit" value="Request Reservation">
+                </fieldset>
+            </form>
+        </section>
+    </main>
+
+ 
+
+    <footer>
+        <p>&copy; Nature's Elk Outfitters</p>
+        <address>
+            123 River Road, Ponca, AR<br>
+            Phone: (555) 010-9988
+        </address>
+        <ul>
+            <li><a href="#">socials</a></li>
+            <li><a href="#">river levels</a></li>
+            <li><a href="#">FAQ</a></li>
+        </ul>
+    </footer>
+
+</body>
+</html>
