@@ -1,7 +1,6 @@
 const sites = {
   "USGS-07055660": "Ponca",
   "USGS-07055646": "Boxley",
-  "USGS-07055780": "Carver",
   "USGS-07055680": "Pruitt"
 };
 
@@ -155,3 +154,13 @@ document.addEventListener("keydown", (e) => {
 
 // Init
 createCards();
+
+
+
+
+
+
+
+//Cabin Rental
+
+
