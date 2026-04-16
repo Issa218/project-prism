@@ -1,3 +1,53 @@
+
+//Map
+
+window.initMap = function () {
+
+    const location = { lat: 36.0260, lng: -93.3652 };
+
+    const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 14,
+        center: location,
+        mapId: "1f3f85a0a84832a6e03de024"
+    });
+
+    const markerContent = document.createElement("div");
+
+    markerContent.innerHTML = `
+        <div style="
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+        ">
+            <img src="https://maps.google.com/mapfiles/ms/icons/green-dot.png">
+            <div style="
+                background:white;
+                padding:4px 10px;
+                border-radius:12px;
+                margin-top:4px;
+                font-weight:bold;
+                color:#2e7d32;
+                box-shadow:0 2px 6px rgba(0,0,0,0.3);
+                white-space:nowrap;
+            ">
+                Nature's Elk Outfitters
+            </div>
+        </div>
+    `;
+
+    new google.maps.marker.AdvancedMarkerElement({
+        map: map,
+        position: location,
+        content: markerContent
+    });
+};
+
+
+
+
+
+// River JS
+
 const sites = {
   "USGS-07055660": "Ponca",
   "USGS-07055646": "Boxley",
@@ -13,27 +63,71 @@ function buildUrl(siteId) {
   return `https://api.waterdata.usgs.gov/ogcapi/v0/collections/continuous/items?monitoring_location_id=${siteId}&parameter_code=00065&time=P14D&limit=5000&api_key=DEMO_KEY`;
 }
 
-// Stage classification
-function getStage(value) {
+// =========================
+// STAGE RULES
+// =========================
+const stageRules = {
+  "USGS-07055646": [
+    { label: "Very Low", className: "very-low", max: 2.0 },
+    { label: "Low / Floatable", className: "low", max: 2.4 },
+    { label: "Moderate / Ample", className: "moderate", max: 4.9 },
+    { label: "High", className: "high", max: 6.0 },
+    { label: "Flood Stage", className: "flood", max: Infinity }
+  ],
+
+  "USGS-07055660": [
+    { label: "Very Low", className: "very-low", max: 2.0 },
+    { label: "Low / Floatable", className: "low", max: 2.4 },
+    { label: "Moderate / Ample", className: "moderate", max: 4.9 },
+    { label: "High", className: "high", max: 6.0 },
+    { label: "Flood Stage", className: "flood", max: Infinity }
+  ],
+
+  "USGS-07055680": [
+    { label: "Very Low", className: "very-low", max: 4.4 },
+    { label: "Low / Floatable", className: "low", max: 4.7 },
+    { label: "Moderate / Ample", className: "moderate", max: 6.6 },
+    { label: "High", className: "high", max: 8.0 },
+    { label: "Flood Stage", className: "flood", max: Infinity }
+  ]
+};
+
+// =========================
+// FLOAT RANGE (CLEAR VISUAL ZONE)
+// =========================
+const floatRanges = {
+  "USGS-07055646": { low: 2.5, high: 4.9 },
+  "USGS-07055660": { low: 2.5, high: 4.9 },
+  "USGS-07055680": { low: 4.8, high: 6.6 }
+};
+
+// Stage
+function getStage(siteId, value) {
   if (value == null) return { label: "No Data", className: "very-low" };
-  if (value < 1) return { label: "Very Low", className: "very-low" };
-  if (value < 3) return { label: "Low", className: "low" };
-  if (value < 6) return { label: "Moderate", className: "moderate" };
-  if (value < 10) return { label: "High", className: "high" };
-  return { label: "Flood Stage", className: "flood" };
+
+  const rules = stageRules[siteId];
+
+  for (const rule of rules) {
+    if (value <= rule.max) {
+      return { label: rule.label, className: rule.className };
+    }
+  }
+
+  return { label: "Unknown", className: "very-low" };
 }
 
 // Trend
 function getTrend(values) {
   if (values.length < 2) return "Data unavailable";
-  const last = values[values.length - 1];
-  const prev = values[values.length - 2];
+  const last = values.at(-1);
+  const prev = values.at(-2);
+
   if (last > prev) return "Rising";
   if (last < prev) return "Falling";
   return "Stable";
 }
 
-// Fetch data
+// Fetch
 async function fetchData(siteId) {
   const res = await fetch(buildUrl(siteId));
   const json = await res.json();
@@ -60,14 +154,14 @@ async function fetchData(siteId) {
   };
 }
 
-// Create cards
+// Cards
 function createCards() {
   const container = document.getElementById("cards");
 
   siteIds.forEach((siteId, index) => {
     const card = document.createElement("div");
     card.className = "card";
-    card.setAttribute("tabindex", "0");
+    card.tabIndex = 0;
 
     card.innerHTML = `
       <h3>${sites[siteId]}</h3>
@@ -85,9 +179,9 @@ function createCards() {
 
     fetchData(siteId).then(data => {
       const values = data.values;
-      const lastValue = values.length ? values[values.length - 1] : null;
+      const lastValue = values.length ? values.at(-1) : null;
 
-      const stage = getStage(lastValue);
+      const stage = getStage(siteId, lastValue);
       const trend = getTrend(values);
 
       card.classList.add(stage.className);
@@ -96,20 +190,18 @@ function createCards() {
         `${stage.label} — ${trend}`;
 
       card.querySelector(".level").textContent =
-        lastValue != null
-          ? `${lastValue.toFixed(2)} ft`
-          : "No data";
+        lastValue != null ? `${lastValue.toFixed(2)} ft` : "No data";
     });
   });
 }
 
-// Select river
+// Select
 function selectRiver(index) {
   currentIndex = index;
   loadRiver(siteIds[index]);
 }
 
-// Load chart
+// Chart
 async function loadRiver(siteId) {
   const data = await fetchData(siteId);
 
@@ -117,6 +209,26 @@ async function loadRiver(siteId) {
     `${sites[siteId]} River Level`;
 
   if (chart) chart.destroy();
+
+  const range = floatRanges[siteId];
+
+  const rangeLowLine = {
+    label: "FLOAT RANGE (LOW)",
+    data: Array(data.values.length).fill(range.low),
+    borderWidth: 4,
+    borderColor: "rgba(0, 180, 100, 0.95)",
+    borderDash: [8, 6],
+    pointRadius: 0
+  };
+
+  const rangeHighLine = {
+    label: "FLOAT RANGE (HIGH)",
+    data: Array(data.values.length).fill(range.high),
+    borderWidth: 4,
+    borderColor: "rgba(0, 180, 100, 0.95)",
+    borderDash: [8, 6],
+    pointRadius: 0
+  };
 
   chart = new Chart(document.getElementById("riverChart"), {
     type: "line",
@@ -126,20 +238,33 @@ async function loadRiver(siteId) {
         {
           label: "Water Level (ft)",
           data: data.values,
-          borderWidth: 2,
+          borderWidth: 2.5,
           tension: 0.3,
-          pointRadius: 0
-        }
+          pointRadius: 0,
+          borderColor: "rgba(30, 90, 200, 0.9)"
+        },
+
+        rangeLowLine,
+        rangeHighLine
       ]
     },
     options: {
       responsive: true,
-      maintainAspectRatio: false
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          labels: {
+            font: {
+              weight: "bold"
+            }
+          }
+        }
+      }
     }
   });
 }
 
-// Keyboard navigation
+// Keyboard nav
 document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowRight") {
     currentIndex = (currentIndex + 1) % siteIds.length;
@@ -157,10 +282,54 @@ createCards();
 
 
 
+///////////////////////////////////////////////canoe form JS/////////////////////////////////////////////////////
+
+    //  Set the calendar to only allow today and future dates no past dates
+        const dateInput = document.getElementById('date');
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.setAttribute('min', today);
+
+        //  Pricing Calculator
+        const canoeDropdown = document.getElementById('canoe-count');
+        const totalDisplay = document.getElementById('liveTotal');
+
+        // Mapping values to table prices
+        const priceMap = {
+            "1": 67, "2": 134, "3": 201, "4": 268, "5": 335, 
+            "6": 402, "7": 455, "8": 536, "9": 603, "10": 670
+        };
+
+        canoeDropdown.addEventListener('change', function() {
+            const val = this.value;
+            if (priceMap[val]) {
+                totalDisplay.textContent = `Total: $${priceMap[val]}.00`;
+            } else {
+                totalDisplay.textContent = "";
+            }
+        });
+
+        // Form Submission 
+        const form = document.getElementById('canoeForm');
+        
+        form.addEventListener('submit', function(e) {
+            const emailValue = document.getElementById('email').value;
+            const dateValue = document.getElementById('date').value;
+
+            // check for Required fields
+            if (!emailValue || !dateValue) {
+                e.preventDefault();
+                alert("Please provide both an Email and a Rental Date.");
+                return;
+            }
+
+            // If valid, show a success message
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            alert(`Thank you, ${name}! Your request for ${canoeDropdown.value} canoe(s) on ${dateValue} has been sent to Nature's Elk Outfitters.`);
+            form.reset();
+            totalDisplay.textContent = "";
+        });
+ 
 
 
-
-
-//Cabin Rental
-
-
+///////////////////////////////////////////////canoe form JS/////////////////////////////////////////////////////

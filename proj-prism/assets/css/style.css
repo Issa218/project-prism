@@ -171,3 +171,24 @@ h1.river{
 
 /* River Levels CSS */
 
+/* Map CSS */
+#map {
+    height: 400px;
+    width: 400px;
+    margin: auto;
+}
+
+h2.map {
+    text-align: center;
+    color: #308d46;
+}
+
+/* #map.footer{
+  height: 200px;
+    width:800px;
+    justify-content:flex-end;
+} */
+
+
+/* Map CSS */
+

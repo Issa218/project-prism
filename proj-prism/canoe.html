@@ -2,88 +2,66 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-     <link rel="stylesheet" href="assets/css/style.css"/>
-     <link rel="stylesheet" href="https://use.typekit.net/ehe6eed.css">
-    <title>Canoe Rental Wireframe | Proof of Concept</title>
+    <link rel="stylesheet" href="assets/css/style.css"/>
+    <link rel="stylesheet" href="https://use.typekit.net/ehe6eed.css">
+    <title>Canoe Rental| Proof of Concept</title>
 </head>
 <body>
 
-  <h1>Nature's Elk Outfitters</h1>
- <nav role="navigation">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-
-        <li>Rentals
-                    <ul>
-                        <li><a href="cabin.html">Cabin Rentals</a></li>
-                        <li><a href="canoe.html">Canoe Rentals</a></li>
-                    </ul>
-                </li>
-                
-        <li><a href="river.html">River Levels</a></li>
-        <li><a href="map.html"> Map</a></li>
-      </ul>
+    <h1>Nature's Elk Outfitters</h1>
+    <nav role="navigation">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li>Rentals
+                <ul>
+                    <li><a href="cabin.html">Cabin Rentals</a></li>
+                    <li><a href="canoe.html">Canoe Rentals</a></li>
+                </ul>
+            </li>
+            <li><a href="river.html">River Levels</a></li>
+            <li><a href="map.html"> Map</a></li>
+        </ul>
     </nav>
-
-    <header>
-        <h1>Canoe Rentals</h1>
-        <p><em>Book canoe's here</em></p>
-        <nav>
-            <ul>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#rentals">Canoes Avalible</a></li>
-                <li><a href="#booking">Book Now</a></li>
-            </ul>
-        </nav>
-    </header>
-
-
 
     <main>
         <section id="about">
-            <h2>Explore the Current</h2>
-            <p>[Hero Image Placeholder]</p>
-            <p>We provide high-quality canoes and gear for everyone from solo paddlers to families.</p>
-            <button type="button">View Availability</button>
+            <h2>Gear Up for the Buffalo</h2>
+            <p>We proudly feature Buffalo Canoes, which are locally manufactured right here in Newton County, Arkansas.]</p>
+            <p> Safety First!: 
+            We provide real-time updates on river levels for major access points like Boxley, Ponca, Pruitt, and Carver to ensure your trip is both fun and safe.</p>
+            <a href="river.html">
+                <button type="button">View River Levels</button>
+            </a>
         </section>
 
-
         <section id="rentals">
-            <h2>Our Fleet & Pricing</h2>
+            <h2>Premium Pricing 1-Day Canoe Rental (plus tax): </h2>
+            <p>Note: Larger group rates are available up to 10 canoes ($670.00)</p>
             <table border="1">
-                    <tr>
-                        <th>Canoe Type</th>
-                        <th>Capacity</th>
-                        <th>Hourly Rate</th>
-                        <th>Daily Rate</th>
-                    </tr>
+                <tr>
+                    <th>Canoe </th>
+                    <th>Price</th>
+                </tr>
                 <tbody>
-                    <tr>
-                        <td>Solo Scout</td>
-                        <td>1 Person</td>
-                        <td>$15</td>
-                        <td>$50</td>
-                    </tr>
-                    <tr>
-                        <td>Tandem Traveler</td>
-                        <td>2 Persons</td>
-                        <td>$25</td>
-                        <td>$80</td>
-                    </tr>
-                    <tr>
-                        <td>Family Voyager</td>
-                        <td>3-4 Persons</td>
-                        <td>$35</td>
-                        <td>$110</td>
-                    </tr>
+                    <tr><td>1 Canoe</td><td>$67.00</td></tr>
+                    <tr><td>2 Canoes</td><td>$134.00</td></tr>
+                    <tr><td>3 Canoes</td><td>$201.00 </td></tr>
+                    <tr><td>4 Canoes</td><td>$268.00</td></tr>
+                    <tr><td>5 Canoes</td><td>$335.00</td></tr>
+                    <tr><td>6 Canoes</td><td>$402.00</td></tr>
+                    <tr><td>7 Canoes</td><td>$455.00</td></tr>
+                    <tr><td>8 Canoes</td><td>$536.00</td></tr>
+                    <tr><td>9 Canoes</td><td>$603.00 </td></tr>
+                    <tr><td>10 Canoes</td><td>$670.00 </td></tr>
                 </tbody>
             </table>
         </section>
 
         <section id="booking">
-            <h2>Reserve Your Canoe</h2>
-            <form action="#" method="post">
+            <h2>Rent a Canoe <span id="liveTotal" ></span></h2>
+            
+            <form id="canoeForm" action="#" method="post">
                 <fieldset>
                     <legend>Rental Information</legend>
                     
@@ -93,43 +71,66 @@
                     <label for="date">Rental Date:</label><br>
                     <input type="date" id="date" name="date" required><br><br>
 
-                    <label for="canoe-type">Select Canoe:</label><br>
-                    <select id="canoe-type" name="canoe-type">
-                        <option value="solo">Solo Scout</option>
-                        <option value="solo">Solo Scout</option>
-                        <option value="tandem">Tandem Traveler</option>
-                        <option value="family">Family Voyager</option>
+                    <label for="email">Email</label><br>
+                    <input type="email" id="email" name="email" required><br><br>
+
+                    <label for="canoe-count">Select Canoes:</label><br>
+                    <select id="canoe-count" name="canoe-count" required>
+                        <option value="">Select</option>
+                         <option value="1">1 ($67.00)</option>
+                        <option value="2">2 ($134.00)</option>
+                        <option value="3">3 ($201.00)</option>
+                        <option value="4">4 ($268.00)</option>
+                        <option value="5">5 ($335.00)</option>
+                        <option value="6">6 ($402.00)</option>
+                        <option value="7">7 ($455.00)</option>
+                        <option value="8">8 ($536.00)</option>
+                        <option value="9">9 ($603.00)</option>
+                        <option value="10">10 ($670.00)</option>
+
                     </select><br><br>
-
-                    <label for="duration">Duration:</label><br>
-                    <input type="radio" id="hourly" name="duration" value="hourly">
-                    <label for="hourly">Hourly</label>
-                    <input type="radio" id="daily" name="duration" value="daily">
-                    <label for="daily">Full Day</label><br><br>
-
-                    <label for="comments">Special Requests:</label><br>
-                    <textarea id="comments" name="comments" rows="4" cols="30"></textarea><br><br>
 
                     <input type="submit" value="Request Reservation">
                 </fieldset>
             </form>
         </section>
+
+        <section id="shuttle">
+            <h3>Professional Shuttle Services:</h3>
+            <p> We provide vehicle shuttling to key river access points to make your float seamless.</p>
+            <p>All of our shuttles leave from Ponca</p>
+            <table border="1">
+                <tr><th>Destination</th><th>Price</th></tr>
+                <tbody>
+                    <tr><td>Steel Creek</td><td>$21.00</td></tr>
+                    <tr><td>Kyles Landing</td><td>$40.00</td></tr>
+                    <tr><td>Pruitt/Hasty</td><td>$55.00</td></tr>
+                    <tr><td>Ozark </td><td>$61.00</td></tr>
+                    <tr><td>Hwy 123 (Carver)</td><td>$65.00</td></tr>
+                    <tr><td>Erbie</td><td>$92.00</td></tr>
+                </tbody>
+            </table>
+        </section>
     </main>
+
+
 
  
 
-    <footer>
+    
+<footer>
         <p>&copy; Nature's Elk Outfitters</p>
         <address>
-            123 River Road, Ponca, AR<br>
-            Phone: (555) 010-9988
+            AR-43, Compton, AR
+            36°01'33.6"N 93°21'54.6"W
+            Phone: (501) 555-5555
         </address>
         <ul>
             <li><a href="#">socials</a></li>
             <li><a href="river.html">river levels</a></li>
             <li><a href="#">FAQ</a></li>
         </ul>
-    </footer>
-
+</footer>
+<script src="assets/js/scripts.js"></script>
 </body>
 </html>

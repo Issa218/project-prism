@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-     <link rel="stylesheet" href="assets/css/style.css"/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
      <link rel="stylesheet" href="https://use.typekit.net/ehe6eed.css">
-    <title> Cabin Rentals | Wireframe</title>
+    <title> Cabin Rentals </title>
 </head>
+
 <body>
+     <main>
 
 <header>
 <h1>Nature's Elk Outfitters</h1>
@@ -25,110 +27,103 @@
         <li><a href="river.html">River Levels</a></li>
         <li><a href="map.html"> Map</a></li>
       </ul>
-    </nav>
-
-        <p><em>Your home away from home in the heart of the woods.</em></p>
-        <nav>
-            <ul>
-                <li><a href="#cabins">Our Cabins</a></li>
-                <li><a href="#amenities">Amenities</a></li>
-                <li><a href="#search">Check Availability</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
 
 
+<section id="activites">
+ <h2>Bear Ridge Cabin</h2>
+        <p>  Experience the ultimate retreat in our premier cabin, designed for those who want to 
+            immerse themselves in nature without sacrificing comfort.</p>
 
-    <main>
+<h3>Activities</h3>
+<p>Our cabins serve as the perfect home base for exploring the Buffalo National River. Beyond the water, you are minutes away from:</p>
+
+<ul>
+    <li>World-class Elk Watching.</li>
+    <li>Scenic Hiking trails and Mountain Biking.</li>
+    <li>Premier Rock Climbing spots.
+</li>
+</ul>
+
+</section>
         <section id="search">
-            <h2>Find Your Getaway</h2>
+            <h2>Booking your stay</h2>
+            <p>Our mobile-friendly platform allows you to view availability and book your stay at Bear Ridge with confidence. 
+                Bear Ridge offers two guests a cozy, fully furnished cabin for a romantic getaway in upper Buffalo River country. </p>
+
+                <p>The cabin has a main floor and sleeping loft with queen-size bed.  We are pleased to offer complimentary WIFI with this cabin rental. 
+                The cabin's kitchen features a dining bar and is fully furnished with appliances, basic meal prep utensils and cookware, a coffeemaker and even a dishwasher.  
+                In the cabin's bathroom, you'll find a lovely stone walk-in shower, along with towels, soap, and shampoo. </p>
+
             <form action="#" method="get">
-                <label for="checkin">Check-in:</label>
-                <input type="date" id="checkin" name="checkin">
+                <label for="checkin">Check-in Date:</label>
+                <input type="date" id="checkin" name="checkin" required>
                 
-                <label for="checkout">Check-out:</label>
-                <input type="date" id="checkout" name="checkout">
+                <label for="checkout">Check-out Date:</label>
+                <input type="date" id="checkout" name="checkout" required>
                 
                 <label for="guests">Guests:</label>
-                <input type="number" id="guests" name="guests" min="1" max="12" value="2">
+                <input type="number" id="guests" name="guests" min="1" max="12" value="2" required> 
+
+                <label for="email">Email</label><br>
+                <input type="email" id="email" name="email" required><br><br>
                 
-                <button type="submit">Search Cabins</button>
+                <button type="submit"> Book Cabin</button>
             </form>
-        </section>
-
-
-
-        <section id="cabins">
-            <h2>Our Featured Cabins</h2>
-
-            <article>
-                <h3>The Pinecone Studio</h3>
-                <p>[Image Placeholder: Cozy interior with a stone fireplace]</p>
-                <ul>
-                    <li><strong>Capacity:</strong> 2 Guests</li>
-                    <li><strong>Beds:</strong> 1 Queen</li>
-                    <li><strong>Key Feature:</strong> Private Hot Tub</li>
-                    <li><strong>Price:</strong> $150 / night</li>
-                </ul>
-                <button type="button">View Details</button>
-            </article>
-
- 
-
-            <article>
-                <h3>Bear Creek Lodge</h3>
-                <p>[Image Placeholder: Large multi-story log cabin with a deck]</p>
-                <ul>
-                    <li><strong>Capacity:</strong> 8 Guests</li>
-                    <li><strong>Beds:</strong> 3 King, 2 Twin</li>
-                    <li><strong>Key Feature:</strong> Mountain View & Game Room</li>
-                    <li><strong>Price:</strong> $450 / night</li>
-                </ul>
-                <button type="button">View Details</button>
-            </article>
         </section>
 
  
 
         <section id="amenities">
-            <h2>What’s Included?</h2>
+            <h2>Amenities</h2>
             <p>Every stay at Timberline includes the following as standard:</p>
-            <ul>
-                <li>High-speed Starlink Wi-Fi</li>
-                <li>Fully equipped kitchen</li>
-                <li>Firewood for indoor/outdoor pits</li>
-                <li>Fresh linens and organic toiletries</li>
-                <li>Keyless smart-lock entry</li>
-            </ul>
+
+           <ul>
+            <li>Hot tub and stone firepit on patio</li>
+            <li>Private creekside sitting area (Coming soon!)</li>
+            <li>Wifi (no cell service in the area)</li>
+            <li>42” TV with satellite/local channels, BluRay player, movies</li>
+            <li>Fully-equipped kitchen – microwave, dishwasher, coffeemaker, toaster</li>
+            <li>Dishes, pots and pans, cleaning supplies</li>
+            <li>All bed and bath linens</li>
+            <li>Front and back porches with seating</li>
+            <li>Outdoor gas grill</li>
+            <li>Mini-split HVAC plus electric “fireplace” heater</li>
+            <li>Parking in front of cabin</li>
+            <li>Firewood for outdoor fire pit</li>
+            <li>Convenient to the Buffalo Outdoor Center store and the Ponca Elk Education Center</li>
+            <li>Just a short drive to the Ponca Access and the Lost Valley Trailhead</li>
+            
+           </ul>
         </section>
 
 
 
-        <section id="reviews">
+        <!-- <section id="reviews">
             <h2>Guest Experiences and Reviews</h2>
             <blockquote>
                 "...."
                 <footer>— <em>anonymous., 2025</em></footer>
             </blockquote>
-        </section>
+        </section> -->
+
     </main>
 
  
 
-    <footer>
+   
+<footer>
         <p>&copy; Nature's Elk Outfitters</p>
         <address>
-            123 River Road, Ponca, AR<br>
-            Phone: (555) 010-9988
+            AR-43, Compton, AR
+            36°01'33.6"N 93°21'54.6"W
+            Phone: (501) 555-5555
         </address>
         <ul>
             <li><a href="#">socials</a></li>
             <li><a href="river.html">river levels</a></li>
             <li><a href="#">FAQ</a></li>
         </ul>
-    </footer>
-
+</footer>
+<script src="assets/js/scripts.js"></script>
 </body>
 </html>
