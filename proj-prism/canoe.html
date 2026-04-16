@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="assets/css/style.css"/>
     <link rel="stylesheet" href="https://use.typekit.net/ehe6eed.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <title>Canoe Rental| Proof of Concept</title>
 </head>
 <body>
@@ -30,9 +31,9 @@
             <p>We proudly feature Buffalo Canoes, which are locally manufactured right here in Newton County, Arkansas.]</p>
             <p> Safety First!: 
             We provide real-time updates on river levels for major access points like Boxley, Ponca, Pruitt, and Carver to ensure your trip is both fun and safe.</p>
-            <a href="river.html">
+            <!-- <a href="river.html">
                 <button type="button">View River Levels</button>
-            </a>
+            </a> -->
         </section>
 
         <section id="rentals">
@@ -58,42 +59,47 @@
             </table>
         </section>
 
-        <section id="booking">
-            <h2>Rent a Canoe <span id="liveTotal" ></span></h2>
-            
-            <form id="canoeForm" action="#" method="post">
-                <fieldset>
-                    <legend>Rental Information</legend>
-                    
-                    <label for="name">Full Name:</label><br>
-                    <input type="text" id="name" name="name" required><br><br>
+       <div class="form-container">
+    <h2>Canoe Rental Request</h2>
 
-                    <label for="date">Rental Date:</label><br>
-                    <input type="date" id="date" name="date" required><br><br>
+```
+<form id="canoeForm">
 
-                    <label for="email">Email</label><br>
-                    <input type="email" id="email" name="email" required><br><br>
+    <label for="name">Name</label>
+    <input type="text" id="name" placeholder="Your name">
 
-                    <label for="canoe-count">Select Canoes:</label><br>
-                    <select id="canoe-count" name="canoe-count" required>
-                        <option value="">Select</option>
-                         <option value="1">1 ($67.00)</option>
-                        <option value="2">2 ($134.00)</option>
-                        <option value="3">3 ($201.00)</option>
-                        <option value="4">4 ($268.00)</option>
-                        <option value="5">5 ($335.00)</option>
-                        <option value="6">6 ($402.00)</option>
-                        <option value="7">7 ($455.00)</option>
-                        <option value="8">8 ($536.00)</option>
-                        <option value="9">9 ($603.00)</option>
-                        <option value="10">10 ($670.00)</option>
+    <label for="email">Email *</label>
+    <input type="email" id="email" required>
 
-                    </select><br><br>
+    <label for="date">Select Rental Date *</label>
+    <input type="text" id="date" placeholder="Choose a date" readonly>
 
-                    <input type="submit" value="Request Reservation">
-                </fieldset>
-            </form>
-        </section>
+    <label for="canoe-count">Number of Canoes *</label>
+    <select id="canoe-count">
+        <option value="">Select...</option>
+        <option value="1">1 Canoe</option>
+        <option value="2">2 Canoes</option>
+        <option value="3">3 Canoes</option>
+        <option value="4">4 Canoes</option>
+        <option value="5">5 Canoes</option>
+        <option value="6">6 Canoes</option>
+        <option value="7">7 Canoes</option>
+        <option value="8">8 Canoes</option>
+        <option value="9">9 Canoes</option>
+        <option value="10">10 Canoes</option>
+    </select>
+
+    <div id="liveTotal"></div>
+
+    <button type="submit">Submit Request</button>
+
+</form>
+
+<div id="confirmationMessage"></div>
+```
+
+</div>
+    
 
         <section id="shuttle">
             <h3>Professional Shuttle Services:</h3>
@@ -119,18 +125,19 @@
 
     
 <footer>
-        <p>&copy; Nature's Elk Outfitters</p>
+        <p>&copy; Wild Buffalo River Company</p>
         <address>
             AR-43, Compton, AR
             36°01'33.6"N 93°21'54.6"W
             Phone: (501) 555-5555
         </address>
         <ul>
-            <li><a href="#">socials</a></li>
-            <li><a href="river.html">river levels</a></li>
+           <li><a href="map.html">Map and Directions</a></li>
+            <li><a href="river.html">River Levels</a></li>
             <li><a href="#">FAQ</a></li>
         </ul>
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="assets/js/scripts.js"></script>
 </body>
 </html>

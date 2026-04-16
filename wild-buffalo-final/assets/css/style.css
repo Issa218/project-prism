@@ -193,74 +193,11 @@ h2.map {
 /* Map CSS */
 
 
-/* Canoe Form */
-body {
-font-family: Arial, sans-serif;
-background: #f4f7f6;
-padding: 40px;
-}
-
-.form-container {
-max-width: 500px;
-margin: auto;
-background: white;
-padding: 25px;
-border-radius: 10px;
-box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-h2 {
-margin-bottom: 20px;
-}
-
-label {
-display: block;
-margin-top: 15px;
-font-weight: bold;
-}
-
-input, select, button {
-width: 100%;
-padding: 10px;
-margin-top: 5px;
-border-radius: 6px;
-border: 1px solid #ccc;
-}
-
-button {
-margin-top: 20px;
-background: #2e7d32;
-color: white;
-font-weight: bold;
-cursor: pointer;
-}
-
-button:hover {
-background: #256628;
-}
-
-#liveTotal {
-margin-top: 15px;
-font-size: 18px;
-font-weight: bold;
-color: #2e7d32;
-}
-
-#confirmationMessage {
-margin-top: 20px;
-padding: 12px;
-background: #e7fbe7;
-border: 1px solid #2e7d32;
-border-radius: 6px;
-display: none;
-}
-
-/* Calendar styling tweaks */
-.flatpickr-day.available {
-background: #e7fbe7;
-}
-
-.flatpickr-day.unavailable {
-background: #ffdddd;
-color: #999;
+/* Cabin Form */
+.form-error {
+  display: block;
+  font-size: 0.8rem;
+  color: red;
+  margin-bottom: 8px;
+  min-height: 1em;
 }
