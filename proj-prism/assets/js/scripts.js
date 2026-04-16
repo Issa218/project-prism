@@ -1,5 +1,242 @@
+ 
+///////////////////////////////////////////////Canoe Form JS/////////////////////////////////////////////////////
+ 
+ document.addEventListener('DOMContentLoaded', () => {
 
-//Map
+const form = document.getElementById('canoeForm');
+const dateInput = document.getElementById('date');
+const canoeDropdown = document.getElementById('canoe-count');
+const totalDisplay = document.getElementById('liveTotal');
+const confirmation = document.getElementById('confirmationMessage');
+
+// ---------------------------
+// CALENDAR (REAL AVAILABILITY UI)
+// ---------------------------
+
+// Dates that are fully booked
+const unavailableDates = [
+    "2026-04-20",
+    "2026-04-21",
+    "2026-04-27",
+    "2026-05-03",
+    "2026-05-10"
+];
+
+// Optional: dates with limited availability
+const availability = {
+    "2026-04-22": 3,
+    "2026-04-23": 1,
+    "2026-04-24": 5
+};
+
+flatpickr(dateInput, {
+    minDate: "today",
+    dateFormat: "Y-m-d",
+
+    // Disable fully booked dates
+    disable: unavailableDates,
+
+    // Customize each day cell
+    onDayCreate: function(dObj, dStr, fp, dayElem) {
+        const date = dayElem.dateObj.toISOString().split('T')[0];
+
+        // Fully booked
+        if (unavailableDates.includes(date)) {
+            dayElem.classList.add('unavailable');
+            dayElem.title = "Fully Booked";
+        } 
+        // Limited availability
+        else if (availability[date] !== undefined) {
+            dayElem.classList.add('available');
+
+            const spots = availability[date];
+            const badge = document.createElement('span');
+            badge.style.display = "block";
+            badge.style.fontSize = "10px";
+            badge.style.marginTop = "2px";
+            badge.innerText = `${spots} left`;
+
+            dayElem.appendChild(badge);
+        } 
+        // Fully available
+        else {
+            dayElem.classList.add('available');
+        }
+    }
+});
+
+// ---------------------------
+// PRICING CALCULATOR
+// ---------------------------
+
+const priceMap = {
+    "1": 67,
+    "2": 134,
+    "3": 201,
+    "4": 268,
+    "5": 335,
+    "6": 402,
+    "7": 455,
+    "8": 536,
+    "9": 603,
+    "10": 670
+};
+
+canoeDropdown.addEventListener('change', () => {
+    const val = canoeDropdown.value;
+
+    if (priceMap[val]) {
+        totalDisplay.textContent = `Total: $${priceMap[val]}.00`;
+    } else {
+        totalDisplay.textContent = "";
+    }
+});
+
+// ---------------------------
+// FAKE FORM SUBMISSION
+// ---------------------------
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const date = dateInput.value;
+    const canoes = canoeDropdown.value;
+
+    // Basic validation
+    if (!email || !date || !canoes) {
+        alert("Please complete all required fields.");
+        return;
+    }
+
+    // Fake "sending" state
+    confirmation.style.display = "block";
+    confirmation.textContent = "Sending request...";
+    
+    // Disable button while "sending"
+    const submitBtn = form.querySelector('button');
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Submitting...";
+
+    // Simulate API delay
+    setTimeout(() => {
+
+        confirmation.textContent = `Thanks ${name || "there"}! Your request for ${canoes} canoe(s) on ${date} has been received. We'll contact you shortly.`;
+
+        // Reset form
+        form.reset();
+        totalDisplay.textContent = "";
+
+        // Reset button
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Submit Request";
+
+    }, 1200);
+});
+
+});
+
+///////////////////////////////////////////////Canoe Form JS/////////////////////////////////////////////////////
+
+
+
+
+///////////////////////////////////////////////Cabin Form JS/////////////////////////////////////////////////////
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const form = document.getElementById('cabinForm');
+    const checkin = document.getElementById('checkin');
+    const checkout = document.getElementById('checkout');
+    const confirmation = document.getElementById('confirmationMessage');
+
+    // ---------------------------
+    // FAKE AVAILABILITY DATA
+    // ---------------------------
+
+    const unavailableDates = [
+        "2026-04-20",
+        "2026-04-21",
+        "2026-04-27",
+        "2026-05-03",
+        "2026-05-10"
+    ];
+
+    // ---------------------------
+    // CHECK-IN CALENDAR
+    // ---------------------------
+
+    flatpickr(checkin, {
+        minDate: "today",
+        disable: unavailableDates,
+        dateFormat: "Y-m-d",
+        onChange: function(selectedDates) {
+            if (selectedDates.length) {
+                checkoutPicker.set("minDate", selectedDates[0]);
+            }
+        }
+    });
+
+    // ---------------------------
+    // CHECK-OUT CALENDAR
+    // ---------------------------
+
+    const checkoutPicker = flatpickr(checkout, {
+        minDate: "today",
+        disable: unavailableDates,
+        dateFormat: "Y-m-d"
+    });
+
+    // ---------------------------
+    // FORM SUBMISSION (FAKE)
+    // ---------------------------
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const adults = document.getElementById('adults').value;
+        const children = document.getElementById('children').value;
+        const requests = document.getElementById('requests').value;
+
+        if (!email || !checkin.value || !checkout.value || !adults) {
+            alert("Please complete required fields.");
+            return;
+        }
+
+        confirmation.style.display = "block";
+        confirmation.textContent = "Sending request...";
+
+        const submitBtn = form.querySelector('button');
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Submitting...";
+
+        setTimeout(() => {
+            confirmation.textContent =
+                `Thanks ${name || "there"}! Your cabin request from ${checkin.value} to ${checkout.value} for ${adults} adult(s) and ${children} child(ren) has been received.`;
+
+            form.reset();
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Submit Request";
+
+        }, 1200);
+    });
+
+});
+
+///////////////////////////////////////////////Cabin form JS/////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////Map JS/////////////////////////////////////////////////////
 
 window.initMap = function () {
 
@@ -30,7 +267,7 @@ window.initMap = function () {
                 box-shadow:0 2px 6px rgba(0,0,0,0.3);
                 white-space:nowrap;
             ">
-                Nature's Elk Outfitters
+              Wild Buffalo River Company
             </div>
         </div>
     `;
@@ -43,10 +280,12 @@ window.initMap = function () {
 };
 
 
+///////////////////////////////////////////////Map JS/////////////////////////////////////////////////////
 
 
 
-// River JS
+
+///////////////////////////////////////////////River JS/////////////////////////////////////////////////////
 
 const sites = {
   "USGS-07055660": "Ponca",
@@ -280,244 +519,12 @@ document.addEventListener("keydown", (e) => {
 // Init
 createCards();
 
-///////////////////////////////////////////////Cabin form JS/////////////////////////////////////////////////////
-(function () {
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-
-  function toISO(d) {
-    return d.toISOString().split('T')[0];
-  }
-
-  const checkinEl = document.getElementById('checkin');
-  const checkoutEl = document.getElementById('checkout');
-  const nightsEl = document.getElementById('nights-display');
-
-  if (!checkinEl) return;
-
-  checkinEl.min = toISO(today);
-  checkoutEl.min = toISO(today);
-
-  checkinEl.addEventListener('change', function () {
-    const ci = new Date(checkinEl.value + 'T00:00:00');
-    const nextDay = new Date(ci);
-    nextDay.setDate(nextDay.getDate() + 1);
-    checkoutEl.min = toISO(nextDay);
-    if (checkoutEl.value && new Date(checkoutEl.value + 'T00:00:00') <= ci) {
-      checkoutEl.value = toISO(nextDay);
-    }
-    updateNights();
-  });
-
-  checkoutEl.addEventListener('change', updateNights);
-
-  function updateNights() {
-    if (!checkinEl.value || !checkoutEl.value) { nightsEl.textContent = ''; return; }
-    const ci = new Date(checkinEl.value + 'T00:00:00');
-    const co = new Date(checkoutEl.value + 'T00:00:00');
-    const diff = Math.round((co - ci) / 86400000);
-    nightsEl.textContent = diff > 0 ? diff + (diff === 1 ? ' night' : ' nights') : '';
-  }
-
-  function showError(id, msg) {
-    const el = document.getElementById(id);
-    if (el) el.textContent = msg;
-  }
-
-  function clearErrors() {
-    ['checkin-err', 'checkout-err', 'guests-err', 'email-err'].forEach(function (id) {
-      const el = document.getElementById(id);
-      if (el) el.textContent = '';
-    });
-  }
-
-  document.getElementById('cabinForm').addEventListener('submit', function (e) {
-    e.preventDefault();
-    clearErrors();
-    let valid = true;
-
-    const ciVal = checkinEl.value;
-    const coVal = checkoutEl.value;
-    const emailVal = document.getElementById('email').value.trim();
-    const guestsVal = parseInt(document.getElementById('guests').value, 10);
-
-    const ciDate = ciVal ? new Date(ciVal + 'T00:00:00') : null;
-    const coDate = coVal ? new Date(coVal + 'T00:00:00') : null;
-
-    if (!ciVal || ciDate < today) {
-      showError('checkin-err', ciDate && ciDate < today ? 'Cannot book a past date.' : 'Please select a check-in date.');
-      valid = false;
-    }
-    if (!coVal || !ciDate || coDate <= ciDate) {
-      showError('checkout-err', 'Check-out must be after check-in.');
-      valid = false;
-    }
-    if (isNaN(guestsVal) || guestsVal < 1 || guestsVal > 2) {
-      showError('guests-err', 'This cabin holds a maximum of 2 guests.');
-      valid = false;
-    }
-    if (!emailVal || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
-      showError('email-err', 'Please enter a valid email address.');
-      valid = false;
-    }
-
-    if (!valid) return;
-
-    document.getElementById('cabinForm').style.display = 'none';
-    document.getElementById('confirm-email').textContent = emailVal;
-    document.getElementById('confirm-in').textContent = ciVal;
-    document.getElementById('confirm-out').textContent = coVal;
-    document.getElementById('bookingSuccess').style.display = 'block';
-  });
-})();
-
-///////////////////////////////////////////////Cabin form JS/////////////////////////////////////////////////////
+///////////////////////////////////////////////River JS/////////////////////////////////////////////////////
 
 
 
 
 
-///////////////////////////////////////////////canoe form JS/////////////////////////////////////////////////////
-
-    document.addEventListener('DOMContentLoaded', () => {
-
-const form = document.getElementById('canoeForm');
-const dateInput = document.getElementById('date');
-const canoeDropdown = document.getElementById('canoe-count');
-const totalDisplay = document.getElementById('liveTotal');
-const confirmation = document.getElementById('confirmationMessage');
-
-// ---------------------------
-// CALENDAR (REAL AVAILABILITY UI)
-// ---------------------------
-
-// Dates that are fully booked
-const unavailableDates = [
-    "2026-04-20",
-    "2026-04-21",
-    "2026-04-27",
-    "2026-05-03",
-    "2026-05-10"
-];
-
-// Optional: dates with limited availability
-const availability = {
-    "2026-04-22": 3,
-    "2026-04-23": 1,
-    "2026-04-24": 5
-};
-
-flatpickr(dateInput, {
-    minDate: "today",
-    dateFormat: "Y-m-d",
-
-    // Disable fully booked dates
-    disable: unavailableDates,
-
-    // Customize each day cell
-    onDayCreate: function(dObj, dStr, fp, dayElem) {
-        const date = dayElem.dateObj.toISOString().split('T')[0];
-
-        // Fully booked
-        if (unavailableDates.includes(date)) {
-            dayElem.classList.add('unavailable');
-            dayElem.title = "Fully Booked";
-        } 
-        // Limited availability
-        else if (availability[date] !== undefined) {
-            dayElem.classList.add('available');
-
-            const spots = availability[date];
-            const badge = document.createElement('span');
-            badge.style.display = "block";
-            badge.style.fontSize = "10px";
-            badge.style.marginTop = "2px";
-            badge.innerText = `${spots} left`;
-
-            dayElem.appendChild(badge);
-        } 
-        // Fully available
-        else {
-            dayElem.classList.add('available');
-        }
-    }
-});
-
-// ---------------------------
-// PRICING CALCULATOR
-// ---------------------------
-
-const priceMap = {
-    "1": 67,
-    "2": 134,
-    "3": 201,
-    "4": 268,
-    "5": 335,
-    "6": 402,
-    "7": 455,
-    "8": 536,
-    "9": 603,
-    "10": 670
-};
-
-canoeDropdown.addEventListener('change', () => {
-    const val = canoeDropdown.value;
-
-    if (priceMap[val]) {
-        totalDisplay.textContent = `Total: $${priceMap[val]}.00`;
-    } else {
-        totalDisplay.textContent = "";
-    }
-});
-
-// ---------------------------
-// FAKE FORM SUBMISSION
-// ---------------------------
-
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const date = dateInput.value;
-    const canoes = canoeDropdown.value;
-
-    // Basic validation
-    if (!email || !date || !canoes) {
-        alert("Please complete all required fields.");
-        return;
-    }
-
-    // Fake "sending" state
-    confirmation.style.display = "block";
-    confirmation.textContent = "Sending request...";
-    
-    // Disable button while "sending"
-    const submitBtn = form.querySelector('button');
-    submitBtn.disabled = true;
-    submitBtn.textContent = "Submitting...";
-
-    // Simulate API delay
-    setTimeout(() => {
-
-        confirmation.textContent = `Thanks ${name || "there"}! Your request for ${canoes} canoe(s) on ${date} has been received. We'll contact you shortly.`;
-
-        // Reset form
-        form.reset();
-        totalDisplay.textContent = "";
-
-        // Reset button
-        submitBtn.disabled = false;
-        submitBtn.textContent = "Submit Request";
-
-    }, 1200);
-});
-
-});
 
 
-///////////////////////////////////////////////canoe form JS/////////////////////////////////////////////////////
-
-
-
-
+   

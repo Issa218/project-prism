@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-  <link rel="stylesheet" href="assets/css/style.css"/>
-     <link rel="stylesheet" href="https://use.typekit.net/ehe6eed.css">
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+ <link rel="stylesheet" href="assets/css/style.css"/>
+ <link rel="stylesheet" href="https://use.typekit.net/ehe6eed.css">
     <title> Cabin Rentals </title>
 </head>
 
@@ -55,39 +56,39 @@
                 The cabin's kitchen features a dining bar and is fully furnished with appliances, basic meal prep utensils and cookware, a coffeemaker and even a dishwasher.  
                 In the cabin's bathroom, you'll find a lovely stone walk-in shower, along with towels, soap, and shampoo. </p>
 
-     <form id="cabinForm" novalidate>
-  <section style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-    <div>
-      <label for="checkin">Check-in Date:</label>
-      <input type="date" id="checkin" name="checkin" required>
-      <span class="form-error" id="checkin-err"></span>
-    </div>
-    <div>
-      <label for="checkout">Check-out Date:</label>
-      <input type="date" id="checkout" name="checkout" required>
-      <span class="form-error" id="checkout-err"></span>
-    </div>
-  </section>
+    <div class="form-container">
 
-  <p id="nights-display" style="font-size: 0.85rem; color: #666; margin: 4px 0 12px;"></p>
+    <h2>Cabin Rental Request</h2>
 
-  <label for="name">Full Name:</label><br>
-  <input type="text" id="name" name="name"><br><br>
+    <form id="cabinForm">
 
-  <label for="guests">Guests :</label>
-  <input type="number" id="guests" name="guests" min="1" max="10" value="1" required>
-  <span class="form-error" id="guests-err"></span>
+        <label>Name</label>
+        <input type="text" id="name" placeholder="Your name">
 
-  <label for="email">Email:</label>
-  <input type="email" id="email" name="email" required>
-  <span class="form-error" id="email-err"></span>
+        <label>Email *</label>
+        <input type="email" id="email" required>
 
-  <button type="submit">Request a Cabin</button>
-</form>
+        <label>Check-in Date *</label>
+        <input type="text" id="checkin" readonly>
 
-<div id="bookingSuccess" style="display:none;">
-  <p><strong>Booking confirmed!</strong> A confirmation will be sent to <span id="confirm-email"></span>.</p>
-  <p>Check-in: <span id="confirm-in"></span> &mdash; Check-out: <span id="confirm-out"></span></p>
+        <label>Check-out Date *</label>
+        <input type="text" id="checkout" readonly>
+
+        <label>Adults *</label>
+        <input type="number" id="adults" min="1" value="1">
+
+        <label>Children</label>
+        <input type="number" id="children" min="0" value="0">
+
+        <label>Special Requests</label>
+        <textarea id="requests" placeholder="Firewood, pet request, late check-in, etc."></textarea>
+
+        <button type="submit">Submit Request</button>
+
+    </form>
+
+    <div id="confirmationMessage"></div>
+
 </div>
 
  </section>
@@ -143,6 +144,7 @@
             <li><a href="#">FAQ</a></li>
         </ul>
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="assets/js/scripts.js"></script>
 </body>
 </html>
