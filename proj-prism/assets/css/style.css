@@ -192,3 +192,12 @@ h2.map {
 
 /* Map CSS */
 
+
+/* Cabin Form */
+.form-error {
+  display: block;
+  font-size: 0.8rem;
+  color: red;
+  margin-bottom: 8px;
+  min-height: 1em;
+}

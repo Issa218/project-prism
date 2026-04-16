@@ -280,6 +280,101 @@ document.addEventListener("keydown", (e) => {
 // Init
 createCards();
 
+///////////////////////////////////////////////Cabin form JS/////////////////////////////////////////////////////
+(function () {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  function toISO(d) {
+    return d.toISOString().split('T')[0];
+  }
+
+  const checkinEl = document.getElementById('checkin');
+  const checkoutEl = document.getElementById('checkout');
+  const nightsEl = document.getElementById('nights-display');
+
+  if (!checkinEl) return;
+
+  checkinEl.min = toISO(today);
+  checkoutEl.min = toISO(today);
+
+  checkinEl.addEventListener('change', function () {
+    const ci = new Date(checkinEl.value + 'T00:00:00');
+    const nextDay = new Date(ci);
+    nextDay.setDate(nextDay.getDate() + 1);
+    checkoutEl.min = toISO(nextDay);
+    if (checkoutEl.value && new Date(checkoutEl.value + 'T00:00:00') <= ci) {
+      checkoutEl.value = toISO(nextDay);
+    }
+    updateNights();
+  });
+
+  checkoutEl.addEventListener('change', updateNights);
+
+  function updateNights() {
+    if (!checkinEl.value || !checkoutEl.value) { nightsEl.textContent = ''; return; }
+    const ci = new Date(checkinEl.value + 'T00:00:00');
+    const co = new Date(checkoutEl.value + 'T00:00:00');
+    const diff = Math.round((co - ci) / 86400000);
+    nightsEl.textContent = diff > 0 ? diff + (diff === 1 ? ' night' : ' nights') : '';
+  }
+
+  function showError(id, msg) {
+    const el = document.getElementById(id);
+    if (el) el.textContent = msg;
+  }
+
+  function clearErrors() {
+    ['checkin-err', 'checkout-err', 'guests-err', 'email-err'].forEach(function (id) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = '';
+    });
+  }
+
+  document.getElementById('cabinForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    clearErrors();
+    let valid = true;
+
+    const ciVal = checkinEl.value;
+    const coVal = checkoutEl.value;
+    const emailVal = document.getElementById('email').value.trim();
+    const guestsVal = parseInt(document.getElementById('guests').value, 10);
+
+    const ciDate = ciVal ? new Date(ciVal + 'T00:00:00') : null;
+    const coDate = coVal ? new Date(coVal + 'T00:00:00') : null;
+
+    if (!ciVal || ciDate < today) {
+      showError('checkin-err', ciDate && ciDate < today ? 'Cannot book a past date.' : 'Please select a check-in date.');
+      valid = false;
+    }
+    if (!coVal || !ciDate || coDate <= ciDate) {
+      showError('checkout-err', 'Check-out must be after check-in.');
+      valid = false;
+    }
+    if (isNaN(guestsVal) || guestsVal < 1 || guestsVal > 2) {
+      showError('guests-err', 'This cabin holds a maximum of 2 guests.');
+      valid = false;
+    }
+    if (!emailVal || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
+      showError('email-err', 'Please enter a valid email address.');
+      valid = false;
+    }
+
+    if (!valid) return;
+
+    document.getElementById('cabinForm').style.display = 'none';
+    document.getElementById('confirm-email').textContent = emailVal;
+    document.getElementById('confirm-in').textContent = ciVal;
+    document.getElementById('confirm-out').textContent = coVal;
+    document.getElementById('bookingSuccess').style.display = 'block';
+  });
+})();
+
+///////////////////////////////////////////////Cabin form JS/////////////////////////////////////////////////////
+
+
+
 
 
 ///////////////////////////////////////////////canoe form JS/////////////////////////////////////////////////////
@@ -333,3 +428,7 @@ createCards();
 
 
 ///////////////////////////////////////////////canoe form JS/////////////////////////////////////////////////////
+
+
+
+
