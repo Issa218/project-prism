@@ -1,32 +1,38 @@
-/* --------------------
-   GLOBAL
---------------------- */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
 
 
 /* custom css properties */
-    :root{
-      --color-1: #E09041;
-      --color-2:#E05841;
-      --color-3: #42E0D0;
-      --color-4:#4D615F;
-      --color-5:#61574D;
-      --color-6: #E3D0C0;
+:root{
+--orange: #E09041;
+--coral:#E05841;
+--turq: #42E0D0;
+--forrest:#4D615F;
+--brown:#61574D;
+--taupe: #E3D0C0;
+--background:#EAE4DF;
+--text:#FFF;
 
-    }
+}
+
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
 
 
 body {
   font-family: "navigo", sans-serif;
   font-weight: 400;
   font-style: normal;
-  background: #f5f7fb;
+  color: var(--background);
   margin: 0;
-  padding: 20px;
+  padding: 30px;
   color: #222;
 }
 
@@ -34,26 +40,145 @@ h1,h2,h3,h4{
   font-family: "gin", serif;
   font-weight: 400;
   font-style: normal;
-  color:var(--color-5);
 }
+
 
  nav{
     padding:1px;
   }
 
    nav li{
-    list-style-type: none;
+    float:left;
    }
 
    nav ul{
-    display:grid;
-    grid-template-columns: repeat(5,1fr);
-    padding: 10px 10px 10px 10px 10px ; 
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
     margin: 0;
-    
-    
+    padding: 0;
+    overflow: hidden;
    }
 
+   nav ul li a, .dropbtn{
+    display: inline-block;
+    text-align: center;
+    color: var(--text);
+    padding: 14px 16px;
+    text-decoration: none;
+   }
+
+  nav ul li a:hover {
+  background-color: var(--forrest);
+}
+
+nav li.dropdown{
+  display: inline-block;
+}
+
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: var(--forrest);
+  min-width: 160px;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: var(--text);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: var(--turq);
+}
+
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.title-bar{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+
+img{
+  width:150px;
+  height: 150px;
+}
+
+
+#title{
+ background-image: url(../img/canoeback628px.webp) ;
+ background-repeat: no-repeat;
+ max-width: 680px;
+ margin: 0px;
+ padding: 0px;
+ height: 450px;
+ display: flex;
+ align-items: flex-start;
+ 
+}
+
+
+#title li{
+  list-style-type: none;
+}
+
+.title-content {
+  text-align: center;
+  color: var(--text)
+}
+
+.container{
+  max-width: 680px;
+  padding: 20px;
+  margin: 0px auto;
+  background-color: var(--background);
+}
+
+
+
+main.container {
+display: grid;
+grid-template-areas:
+    "nav"
+    "title"
+    "about"
+    "rentals"
+    "form"
+    "shuttle"
+    "footer";
+}
+
+#navbar{
+  grid-area:nav;
+}
+#title {
+  grid-area: title;
+}
+#about {
+  grid-area: about;
+}
+#rentals {
+  grid-area: rentals;
+}
+.form-container {
+  grid-area: form;
+}
+#shuttle {
+  grid-area: shuttle;
+}
+.footer{
+  grid-area: footer;
+}
 
 
 /* River Levels CSS */
@@ -171,6 +296,11 @@ h1.river{
 
 /* River Levels CSS */
 
+
+
+
+
+
 /* Map CSS */
 #map {
     height: 400px;
@@ -196,21 +326,22 @@ h2.map {
 /* Canoe Form */
 body {
 font-family: Arial, sans-serif;
-background: #f4f7f6;
+background: 4f7f6;
 padding: 40px;
 }
 
 .form-container {
 max-width: 500px;
 margin: auto;
-background: white;
+color:#000;
+background: var(--turq);
 padding: 25px;
-border-radius: 10px;
 box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-h2 {
+h2.form {
 margin-bottom: 20px;
+color:#000;
 }
 
 label {
@@ -229,14 +360,14 @@ border: 1px solid #ccc;
 
 button {
 margin-top: 20px;
-background: #2e7d32;
+background: var(--forrest);
 color: white;
 font-weight: bold;
 cursor: pointer;
 }
 
 button:hover {
-background: #256628;
+background: var(--coral);
 }
 
 #liveTotal {
@@ -264,3 +395,64 @@ background: #e7fbe7;
 background: #ffdddd;
 color: #999;
 }
+
+
+
+
+
+
+
+/* ----------------------------- Media Queries -------------------------------------*/
+
+
+
+/* @media screen and (min-width:768px){
+   
+  header.container{
+    max-width:900px;
+  }
+
+  main.container {
+  max-width:900px;
+  grid-template-columns:45% auto;
+  grid-template-areas:
+    "title title"
+    "about about"
+    "education skills"
+    "experience experience"
+
+    ;
+}
+
+#about{
+  display:grid;
+  gap:2em;
+  grid-template-columns: 350px 1fr auto;
+  
+  grid-template-areas: 
+  "nav nav nav"
+  "bio details details"
+  "links links links"
+  ;
+
+}
+
+.bio{
+grid-area:bio
+}
+
+.details{
+  grid-area:details;
+}
+
+.related-links{
+  grid-area:links;
+  padding-bottom:20px;
+  border-bottom: 2px solid #879EBF;
+}
+
+}
+
+@media screen and (min-width:992px){
+
+} */

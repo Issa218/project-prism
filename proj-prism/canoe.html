@@ -5,27 +5,55 @@
     <link rel="stylesheet" href="assets/css/style.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="https://use.typekit.net/ehe6eed.css">
-    <title>Canoe Rental| Proof of Concept</title>
+    <title>Canoe Rental</title>
 </head>
-<body>
 
-    <h1>Wild Buffalo River Company</h1>
-    <nav role="navigation">
+<main class="container">
+
+    <section id="title">
+
+    <div class="title-bar"></div>
+    <a href="index.html">
+    <img class="title" src="assets/img/logo_transparent.png" alt="turquoise sun with elf coming from left corner">
+    </a>
+
+    <nav id="navbar" role="navigation">
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About Us</a></li>
-            <li>Rentals
+            
+            <li class="dropdown">
+            <a class="dropbtn">Rentals</a>
                 <ul>
+                    <div class="dropdown-content">
                     <li><a href="cabin.html">Cabin Rentals</a></li>
                     <li><a href="canoe.html">Canoe Rentals</a></li>
-                </ul>
+                    </div>
+                </ul>   
             </li>
+
             <li><a href="river.html">River Levels</a></li>
             <li><a href="map.html"> Map</a></li>
         </ul>
     </nav>
+    </div>
 
-    <main>
+    <div class="title-content">
+    <h1>Canoe Rentals</h1>
+    <p>Book Canoes Here</p>
+    <ul>
+        <li><a href="#"></a>About</li>
+        <li><a href="#"></a>Canoes Booking</li>
+        <li><a href="#"></a>Shuttle Services</li>
+    </ul>
+    </div>
+    
+    </section>
+
+
+
+  <body>
+
         <section id="about">
             <h2>Gear Up for the Buffalo</h2>
             <p>We proudly feature Buffalo Canoes, which are locally manufactured right here in Newton County, Arkansas.]</p>
@@ -61,8 +89,8 @@
 
 
         
-       <div class="form-container">
-    <h2>Canoe Rental Request</h2>
+<section class="form-container">
+    <h2 class="form">Canoe Rental Request</h2>
 
 ```
 <form id="canoeForm">
@@ -100,7 +128,7 @@
 <div id="confirmationMessage"></div>
 ```
 
-</div>
+</section>
     
 
         <section id="shuttle">
@@ -126,7 +154,7 @@
  
 
     
-<footer>
+<footer class="footer">
         <p>&copy; Wild Buffalo River Company</p>
         <address>
             AR-43, Compton, AR
@@ -139,7 +167,9 @@
             <li><a href="#">FAQ</a></li>
         </ul>
 </footer>
+
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="assets/js/scripts.js"></script>
+
 </body>
 </html>
