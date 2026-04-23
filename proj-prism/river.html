@@ -6,30 +6,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>River Dashboard</title>
 
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/style.css"/>
   <link rel="stylesheet" href="https://use.typekit.net/ehe6eed.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<h1 class="river" >Wild Buffalor River Company</h1>
- <nav role="navigation">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-
-        <li>Rentals
-                    <ul>
-                        <li><a href="cabin.html">Cabin Rentals</a></li>
-                        <li><a href="canoe.html">Canoe Rentals</a></li>
-                    </ul>
-                </li>
-
-        <li><a href="river.html">River Levels</a></li>
-        <li><a href="map.html"> Map</a></li>
-      </ul>
-    </nav>
 
 <body>
+
+<main class="container">
+
+   <section id="title">
+
+    <div class="title-bar"></div>
+    <a href="index.html">
+    <img class="title" src="assets/img/logo_transparent.png" alt="turquoise sun with elf coming from left corner">
+    </a>
+
+    <nav id="navbar" role="navigation">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            
+            <li class="dropdown">
+            <a class="dropbtn">Rentals</a>
+                <ul>
+                    <div class="dropdown-content">
+                    <li><a href="cabin.html">Cabin Rentals</a></li>
+                    <li><a href="canoe.html">Canoe Rentals</a></li>
+                    </div>
+                </ul>   
+            </li>
+
+            <li><a href="river.html">River Levels</a></li>
+            <li><a href="map.html"> Map</a></li>
+        </ul>
+    </nav>
+    </div>
+
+    </section>
 
   <header class="river">
     <h1>River Conditions Dashboard</h1>
@@ -58,6 +73,7 @@
     </div>
   </section>
 
+</main>
 
 
 

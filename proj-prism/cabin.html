@@ -9,26 +9,36 @@
 </head>
 
 <body>
-    <main>
+    <main class="container">
 
-<header>
-<h1>Wild Buffalo River Company</h1>
-  <nav role="navigation">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
+    <section id="title">
 
-        <li>Rentals
-                    <ul>
-                        <li><a href="cabin.html">Cabin Rentals</a></li>
-                        <li><a href="canoe.html">Canoe Rentals</a></li>
-                    </ul>
-                </li>
-                
-        <li><a href="river.html">River Levels</a></li>
-        <li><a href="map.html"> Map</a></li>
-      </ul>
-</nav>
+    <div class="title-bar"></div>
+    <a href="index.html">
+    <img class="title" src="assets/img/logo_transparent.png" alt="turquoise sun with elf coming from left corner">
+    </a>
+
+    <nav id="navbar" role="navigation">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            
+            <li class="dropdown">
+            <a class="dropbtn">Rentals</a>
+                <ul>
+                    <div class="dropdown-content">
+                    <li><a href="cabin.html">Cabin Rentals</a></li>
+                    <li><a href="canoe.html">Canoe Rentals</a></li>
+                    </div>
+                </ul>   
+            </li>
+
+            <li><a href="river.html">River Levels</a></li>
+            <li><a href="map.html"> Map</a></li>
+        </ul>
+    </nav>
+    </div>
+</section>
 
 <section id="activites">
 <h2>Cabin Rentals</h2>
@@ -127,10 +137,8 @@
             </blockquote>
         </section> -->
 
-    </main>
 
  
-   
 <footer>
         <p>&copy; Wild Buffalo River Company</p>
         <address>
@@ -144,6 +152,9 @@
             <li><a href="#">FAQ</a></li>
         </ul>
 </footer>
+
+</main>
+
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="assets/js/scripts.js"></script>
 </body>
