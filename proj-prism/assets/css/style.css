@@ -85,7 +85,7 @@ h1,h2,h3,h4{
     display: block;
     text-align: center;
     color: var(--text);
-    padding: 14px 16px;
+    padding: 10px;
     text-decoration: none;
    }
 
@@ -141,8 +141,8 @@ nav li.dropdown{
 
 
  .title{
-  width:100px;
-  height: 100px;
+  width:120px;
+  height: 120px;
 }
 
 /* -------------------------------------------------------------Canoe CSS----------------------------------------------------------*/
