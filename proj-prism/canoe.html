@@ -8,7 +8,7 @@
     <title>Canoe Rental</title>
 </head>
 
-<body>
+<body id="canoe">
 <main class="container">
 
     <section id="title">
@@ -17,11 +17,11 @@
     <a href="index.html">
     <img class="title" src="assets/img/logo_transparent.png" alt="turquoise sun with elf coming from left corner">
     </a>
-
     <nav id="navbar" role="navigation">
-        <ul>
+    
+        <ul id="first">
             <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
+            <li><a href="about.html">About</a></li>
             
             <li class="dropdown">
             <a class="dropbtn">Rentals</a>
@@ -41,14 +41,13 @@
 
     <div class="title-content">
     <h1>Canoe Rentals</h1>
-    <p>Book Canoes Here</p>
+    <p><a href="#canoeForm">Book Canoes Here</a></p>
     <ul>
-        <li><a href="#"></a>About</li>
-        <li><a href="#"></a>Canoes Booking</li>
-        <li><a href="#"></a>Shuttle Services</li>
+        <li><a href="#about-canoes">Overview</a></li>
+        <li><a href="#">Canoes Booking</a></li>
+        <li><a href="#">Shuttle Services</a></li>
     </ul>
     </div>
-    
     </section>
 
 
@@ -58,7 +57,7 @@
             <p> Safety First!: 
             We provide real-time updates on river levels for major access points like Boxley, Ponca, Pruitt, and Carver to ensure your trip is both fun and safe.</p>
             <a href="#canoeForm">
-                <button type="button">View Availability</button>
+                <button class="availability" type="button">View Availability</button>
             </a>
         </section>
 
