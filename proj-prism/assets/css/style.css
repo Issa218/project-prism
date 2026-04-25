@@ -353,7 +353,11 @@ th{
 }
 
 
-#activites{
+#cabin-info{
+  margin:20px;
+  padding:10px;
+}
+#activities{
   margin:20px;
   padding:10px;
 }
@@ -382,6 +386,10 @@ th{
   color:var(--orange);
 }
 
+#cabin-info h3, h4{
+  color:var(--orange);
+}
+
 #cabin .form-container h2{
   color:var(--text);
 }
@@ -395,16 +403,21 @@ th{
   width:70vw;
 }
 
-#activites ul, #amenities ul{
+#activities ul,#search ul,#cabin-info ul, #amenities ul{
   list-style-type: square;
   padding: 10px;
 }
-#activites ul li, #amenities ul li{
+#activities ul li, #search ul li, #cabin-info ul li, #amenities ul li{
   padding:5px;
 }
 
-#activites ul li::marker, #amenities ul li::marker{
+#activities ul li::marker, #search ul li::marker, #cabin-info ul li::marker, #amenities ul li::marker{
   color:var(--coral);
+}
+
+#cabin-imgs{
+  margin:15px;
+  padding:20px;
 }
 
 blockquote{
