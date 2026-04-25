@@ -191,7 +191,7 @@ nav li.dropdown{
  background-image: url(../img/canoelake480px.webp);
  background-repeat: no-repeat;
  max-width: 480px;
- height: 450px;
+ height: 400px;
 }
 
 #rentals{
@@ -219,7 +219,6 @@ table{
   background-size: cover;      /* This ensures the image fills the box without gaps */
   background-position: center; /* Keeps the focus of the photo in the middle */
   width: 100%;
-  height: 300px;               /* Reduced height for mobile screens */
 }
 
  tr:nth-child(even){ 
@@ -309,10 +308,34 @@ th{
  ;
 }
 
+.slick-autoplay-toggle-button,
+.slick-prev .slick-prev-icon, .slick-next .slick-next-icon,
+.slick-dots li button .slick-dot-icon,
+.slick-dots li.slick-active button .slick-dot-icon {
+  color: white;
+}
+
+
+.slick-next:focus .slick-next-icon,
+.slick-next:focus .slick-prev-icon,
+.slick-prev:focus .slick-next-icon,
+.slick-prev:focus .slick-prev-icon,
+.slick-dots li.slick-active button:focus .slick-dot-icon,
+.slick-autoplay-toggle-button:focus 
+{
+    color:black;
+}
+
+.slick-autoplay-toggle-button {
+    display: none !important; /* Hides the autoplay toggle button */
+    visibility: hidden;
+}
+
 #cabin .title-content {
   text-align: center;
   color: var(--text);
   padding:10px;  
+  border-bottom: solid 10px var(--coral);
 }
 
 
@@ -345,9 +368,14 @@ th{
   padding:10px;
 }
 
+#reviews{
+  margin:20px;
+  padding:10px;
+}
 
 #cabin h2{
  color:var(--coral);
+ text-align: center;
 }
 
 #cabin h3{
@@ -364,19 +392,65 @@ th{
 
 #cabin .container{
   margin:40px auto;
-    width:70vw;
+  width:70vw;
+}
+
+#activites ul, #amenities ul{
+  list-style-type: square;
+  padding: 10px;
+}
+#activites ul li, #amenities ul li{
+  padding:5px;
+}
+
+#activites ul li::marker, #amenities ul li::marker{
+  color:var(--coral);
+}
+
+blockquote{
+  background-color: var(--background);
+  border-left: 4px solid var(--coral);
+  padding: 10px 20px;
+  margin: 20px auto;
+}
+
+footer.reviews{
+  background-color: var(--turq);
+  padding:10px;
+  text-align: right;
+  font-style: italic;
+  color: #000;
+}
 
 
 /* -------------------------------------------------------------Cabin CSS----------------------------------------------------------- */
 
-footer{
+.footer{
   background-color: var(--forrest);
   color:var(--text);
-  list-style-type: none;
+  font-size: 0.8rem;
   padding: 10px 7px 10px 7px;
 }
 
+address{
+  text-align: left;
+}
 
+.footer ul{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  list-style-type: none;
+}
+.footer ul a{
+  color:var(--text);
+  text-decoration: none;
+}
+
+footer a:hover{
+ transition: color 0.7s ease;
+ color:var(--turq);
+}
 
 
 
@@ -676,6 +750,4 @@ grid-area:bio
 
 }
 
-@media screen and (min-width:992px){
-
-} */
+@media screen and (min-width:992px) */

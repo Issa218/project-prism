@@ -231,7 +231,6 @@ document.addEventListener('DOMContentLoaded', () => {
 ////////////////////////////////////////////// Cabin Img Slideshow JS//////////////////////////////////////////////
 
 $(document).ready(function() {
-
     $('.fade').slick({
       dots: true,
       infinite: true,
@@ -240,10 +239,9 @@ $(document).ready(function() {
       slide: 'div',
       cssEase: 'linear',
       autoplay: true,
-      autoplaySpeed: 2000
+      autoplaySpeed: 2000,
+      useAutoplayToggleButton: false 
     });
-
-
 });
 
 ////////////////////////////////////////////// Cabin Img Slideshow JS//////////////////////////////////////////////
