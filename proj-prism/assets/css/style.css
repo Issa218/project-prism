@@ -645,6 +645,27 @@ h1.river{
   height: 400px;
 }
 
+#river #title{
+ display: grid;
+ grid-template-columns: repeat(6,1fr);
+ grid-template-areas:
+ "img nav nav nav nav nav"
+ "heading heading heading heading heading heading"
+ 
+ ;
+}
+
+#title img{
+  grid-area: img;
+}
+
+#river #first{
+  grid-area: nav;
+}
+
+#river .title-content{
+  grid-area: heading;
+}
 /*---------------------------------------------- River Levels CSS -----------------------------------------*/
 
 
@@ -653,18 +674,32 @@ h1.river{
 
 
 /*---------------------------------------------- Map CSS ---------------------------------------------------*/
-#map {
-    height: 400px;
-    width: 400px;
-    margin: auto;
-}
 
 h2.map {
     text-align: center;
     color: var(--forrest);
 }
 
+#map #title{
+ display: grid;
+ grid-template-columns: repeat(6,1fr);
+ grid-template-areas:
+ "img nav nav nav nav nav"
+ 
+ ;
+}
 
+#title img{
+  grid-area: img;
+}
+
+#map #first{
+  grid-area: nav;
+}
+
+#map .container{
+  max-width: 480px;
+}
 
 /*---------------------------------------------- Map CSS ---------------------------------------------------*/
 
