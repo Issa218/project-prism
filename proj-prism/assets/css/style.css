@@ -59,6 +59,43 @@ h1,h2,h3,h4{
   font-weight: 400;
   font-style: normal;
 }
+/* -------------------------------------------------------------Index and About CSS----------------------------------------------------------- */
+#about #title{
+display: grid;
+ grid-template-columns: repeat(6,1fr);
+ grid-template-areas:
+ "img nav nav nav nav nav"
+ "heading heading heading heading heading heading"
+}
+
+
+
+#home #title{
+ display: grid;
+ grid-template-columns: repeat(6,1fr);
+ grid-template-areas:
+ "img nav nav nav nav nav"
+ "heading heading heading heading heading heading"
+ 
+ ;
+}
+
+#title img{
+  grid-area: img;
+}
+
+#home #first{
+  grid-area: nav;
+}
+
+#about #first{
+  grid-area: nav;
+}
+
+
+
+
+/* -------------------------------------------------------------Index and About CSS----------------------------------------------------------- */
 
 /* -------------------------------------------Nav CSS----------------------------------------------- */
 
