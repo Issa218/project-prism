@@ -71,6 +71,10 @@ display: grid;
 
 
 #home #title{
+ background-image: url(../img/homeback480px.webp) ;
+ background-repeat: no-repeat;
+ max-width: 480px;
+ height: 450px;
  display: grid;
  grid-template-columns: repeat(6,1fr);
  grid-template-areas:
@@ -92,6 +96,11 @@ display: grid;
   grid-area: nav;
 }
 
+#home .title-content {
+  text-align: center;
+  color: var(--text);
+  padding:10px;  
+}
 
 
 
