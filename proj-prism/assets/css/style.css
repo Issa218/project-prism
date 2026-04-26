@@ -60,15 +60,6 @@ h1,h2,h3,h4{
   font-style: normal;
 }
 /* -------------------------------------------------------------Index and About CSS----------------------------------------------------------- */
-#about #title{
-display: grid;
- grid-template-columns: repeat(6,1fr);
- grid-template-areas:
- "img nav nav nav nav nav"
- "heading heading heading heading heading heading"
-}
-
-
 
 #home #title{
  background-image: url(../img/homeback480px.webp) ;
@@ -92,16 +83,43 @@ display: grid;
   grid-area: nav;
 }
 
-#about #first{
-  grid-area: nav;
+#home .title-content{
+  grid-area: heading;
 }
 
 #home .title-content {
-  text-align: center;
+  text-align:center;
   color: var(--text);
   padding:10px;  
 }
 
+#mission{
+  padding: 10px;
+ margin: 10px;
+ text-align: center;
+}
+
+#story{
+padding: 10px;
+ margin: 10px;
+ text-align: center;
+}
+
+#commitment{
+padding: 20px;
+ margin: 10px;
+ text-align: center;
+}
+
+#why{
+padding: 20px;
+ margin: 10px;
+ text-align: center;
+}
+
+#home h2{
+  color:var(--coral);
+}
 
 
 /* -------------------------------------------------------------Index and About CSS----------------------------------------------------------- */
