@@ -230,19 +230,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
 ////////////////////////////////////////////// Cabin Img Slideshow JS//////////////////////////////////////////////
 
-$(document).ready(function() {
-    $('.fade').slick({
-      dots: true,
-      infinite: true,
-      speed: 500,
-      fade: true,
-      slide: 'div',
-      cssEase: 'linear',
-      autoplay: true,
-      autoplaySpeed: 2000,
-      useAutoplayToggleButton: false 
-    });
-});
+// $(document).ready(function() {
+//     $('.fade').slick({
+//       dots: true,
+//       infinite: true,
+//       speed: 500,
+//       fade: true,
+//       slide: 'div',
+//       cssEase: 'linear',
+//       autoplay: true,
+//       autoplaySpeed: 2000,
+//       useAutoplayToggleButton: false 
+//     });
+// });
 
 ////////////////////////////////////////////// Cabin Img Slideshow JS//////////////////////////////////////////////
 

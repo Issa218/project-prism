@@ -548,6 +548,15 @@ h1.river{
   padding-bottom: 5px;
 }
 
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #f5f7fb;
+  margin: 0;
+  padding: 20px;
+  color: #222;
+}
+
 /* --------------------
    LEGEND
 --------------------- */
@@ -633,7 +642,6 @@ h1.river{
    CHART
 --------------------- */
 .chart-card {
-  max-width: 1000px;
   margin: 0 auto;
   background: white;
   padding: 20px;
@@ -641,8 +649,10 @@ h1.river{
   box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
 
+
 .chart-container {
-  height: 400px;
+  margin:0px;
+  height: 500px;
 }
 
 #river #title{
@@ -682,6 +692,7 @@ h2.map {
 
 #map #title{
  display: grid;
+ margin:0px;
  grid-template-columns: repeat(6,1fr);
  grid-template-areas:
  "img nav nav nav nav nav"
