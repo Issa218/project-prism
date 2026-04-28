@@ -815,13 +815,13 @@ color: #999;
 
 
 
-/* @media screen and (min-width:768px){
+ /* @media screen and (min-width:768px){
    
-  header.container{
+.container{
     max-width:900px;
   }
 
-  main.container {
+main.container {
   max-width:900px;
   grid-template-columns:45% auto;
   grid-template-areas:
@@ -833,13 +833,10 @@ color: #999;
     ;
 }
 
-#about{
+#home, #canoe, #cabin, #river, #map{
   display:grid;
-  gap:2em;
-  grid-template-columns: 350px 1fr auto;
-  
   grid-template-areas: 
-  "nav nav nav"
+  ""
   ""
   ""
   ;
@@ -854,12 +851,12 @@ grid-area:bio
   grid-area:details;
 }
 
-.related-links{
-  grid-area:links;
+.footer{
+  grid-area:footer;
   padding-bottom:20px;
   border-bottom: 2px solid #879EBF;
 }
 
-}
+} */
 
-@media screen and (min-width:992px) */
+
