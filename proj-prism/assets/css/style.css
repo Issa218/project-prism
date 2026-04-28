@@ -59,6 +59,70 @@ h1,h2,h3,h4{
   font-weight: 400;
   font-style: normal;
 }
+/* -------------------------------------------------------------Index and About CSS----------------------------------------------------------- */
+
+#home #title{
+ background-image: url(../img/homeback480px.webp) ;
+ background-repeat: no-repeat;
+ max-width: 480px;
+ height: 450px;
+ display: grid;
+ grid-template-columns: repeat(6,1fr);
+ grid-template-areas:
+ "img nav nav nav nav nav"
+ "heading heading heading heading heading heading"
+ 
+ ;
+}
+
+#title img{
+  grid-area: img;
+}
+
+#home #first{
+  grid-area: nav;
+}
+
+#home .title-content{
+  grid-area: heading;
+}
+
+#home .title-content {
+  text-align:center;
+  color: var(--text);
+  padding:10px;  
+}
+
+#mission{
+  padding: 10px;
+ margin: 10px;
+ text-align: center;
+}
+
+#story{
+padding: 10px;
+ margin: 10px;
+ text-align: center;
+}
+
+#commitment{
+padding: 20px;
+ margin: 10px;
+ text-align: center;
+}
+
+#why{
+padding: 20px;
+ margin: 10px;
+ text-align: center;
+}
+
+#home h2{
+  color:var(--coral);
+}
+
+
+/* -------------------------------------------------------------Index and About CSS----------------------------------------------------------- */
 
 /* -------------------------------------------Nav CSS----------------------------------------------- */
 
@@ -191,7 +255,7 @@ nav li.dropdown{
  background-image: url(../img/canoelake480px.webp);
  background-repeat: no-repeat;
  max-width: 480px;
- height: 450px;
+ height: 400px;
 }
 
 #rentals{
@@ -219,7 +283,6 @@ table{
   background-size: cover;      /* This ensures the image fills the box without gaps */
   background-position: center; /* Keeps the focus of the photo in the middle */
   width: 100%;
-  height: 300px;               /* Reduced height for mobile screens */
 }
 
  tr:nth-child(even){ 
@@ -234,7 +297,7 @@ tr:nth-child(odd){
 }
 
 tr:hover{
-        background-color: rgba(0, 0, 0, 0.3);   
+   background-color: rgba(0, 0, 0, 0.3);   
 
     }
 
@@ -252,7 +315,7 @@ th{
     
   
   td{
-  border:1px solid var(--coral);
+  border:2px solid var(--coral);
   padding:5px;
   }
 
@@ -309,10 +372,34 @@ th{
  ;
 }
 
+.slick-autoplay-toggle-button,
+.slick-prev .slick-prev-icon, .slick-next .slick-next-icon,
+.slick-dots li button .slick-dot-icon,
+.slick-dots li.slick-active button .slick-dot-icon {
+  color: white;
+}
+
+
+.slick-next:focus .slick-next-icon,
+.slick-next:focus .slick-prev-icon,
+.slick-prev:focus .slick-next-icon,
+.slick-prev:focus .slick-prev-icon,
+.slick-dots li.slick-active button:focus .slick-dot-icon,
+.slick-autoplay-toggle-button:focus 
+{
+    color:black;
+}
+
+.slick-autoplay-toggle-button {
+    display: none !important; /* Hides the autoplay toggle button */
+    visibility: hidden;
+}
+
 #cabin .title-content {
   text-align: center;
   color: var(--text);
   padding:10px;  
+  border-bottom: solid 10px var(--coral);
 }
 
 
@@ -330,7 +417,11 @@ th{
 }
 
 
-#activites{
+#cabin-info{
+  margin:20px;
+  padding:10px;
+}
+#activities{
   margin:20px;
   padding:10px;
 }
@@ -345,12 +436,21 @@ th{
   padding:10px;
 }
 
+#reviews{
+  margin:20px;
+  padding:10px;
+}
 
 #cabin h2{
  color:var(--coral);
+ text-align: center;
 }
 
 #cabin h3{
+  color:var(--orange);
+}
+
+#cabin-info h3, h4{
   color:var(--orange);
 }
 
@@ -364,19 +464,75 @@ th{
 
 #cabin .container{
   margin:40px auto;
+<<<<<<< HEAD
     width:70vw;
 }
+=======
+  width:70vw;
+}
+
+#activities ul,#search ul,#cabin-info ul, #amenities ul{
+  list-style-type: square;
+  padding: 10px;
+}
+#activities ul li, #search ul li, #cabin-info ul li, #amenities ul li{
+  padding:5px;
+}
+
+#activities ul li::marker, #search ul li::marker, #cabin-info ul li::marker, #amenities ul li::marker{
+  color:var(--coral);
+}
+
+#cabin-imgs{
+  margin:15px;
+  padding:20px;
+}
+
+blockquote{
+  background-color: var(--background);
+  border-left: 4px solid var(--coral);
+  padding: 10px 20px;
+  margin: 20px auto;
+}
+
+footer.reviews{
+  background-color: var(--turq);
+  padding:10px;
+  text-align: right;
+  font-style: italic;
+  color: #000;
+}
+
+>>>>>>> e3ad6623a782e8d535388dc1925622a55f3a96e8
 
 /* -------------------------------------------------------------Cabin CSS----------------------------------------------------------- */
 
-footer{
+.footer{
   background-color: var(--forrest);
   color:var(--text);
-  list-style-type: none;
+  font-size: 0.8rem;
   padding: 10px 7px 10px 7px;
 }
 
+address{
+  text-align: left;
+}
 
+.footer ul{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  list-style-type: none;
+}
+.footer ul a{
+  color:var(--text);
+  text-decoration: none;
+}
+
+footer a:hover{
+ transition: color 0.7s ease;
+ color:var(--turq);
+}
 
 
 
@@ -395,6 +551,15 @@ h1.river{
   color: #8B6508;
   border-bottom: 4px solid #8B6508;
   padding-bottom: 5px;
+}
+
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #f5f7fb;
+  margin: 0;
+  padding: 20px;
+  color: #222;
 }
 
 /* --------------------
@@ -482,7 +647,6 @@ h1.river{
    CHART
 --------------------- */
 .chart-card {
-  max-width: 1000px;
   margin: 0 auto;
   background: white;
   padding: 20px;
@@ -490,10 +654,33 @@ h1.river{
   box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
 
+
 .chart-container {
-  height: 400px;
+  margin:0px;
+  height: 500px;
 }
 
+#river #title{
+ display: grid;
+ grid-template-columns: repeat(6,1fr);
+ grid-template-areas:
+ "img nav nav nav nav nav"
+ "heading heading heading heading heading heading"
+ 
+ ;
+}
+
+#title img{
+  grid-area: img;
+}
+
+#river #first{
+  grid-area: nav;
+}
+
+#river .title-content{
+  grid-area: heading;
+}
 /*---------------------------------------------- River Levels CSS -----------------------------------------*/
 
 
@@ -502,18 +689,33 @@ h1.river{
 
 
 /*---------------------------------------------- Map CSS ---------------------------------------------------*/
-#map {
-    height: 400px;
-    width: 400px;
-    margin: auto;
-}
 
 h2.map {
     text-align: center;
     color: var(--forrest);
 }
 
+#map #title{
+ display: grid;
+ margin:0px;
+ grid-template-columns: repeat(6,1fr);
+ grid-template-areas:
+ "img nav nav nav nav nav"
+ 
+ ;
+}
 
+#title img{
+  grid-area: img;
+}
+
+#map #first{
+  grid-area: nav;
+}
+
+#map .container{
+  max-width: 480px;
+}
 
 /*---------------------------------------------- Map CSS ---------------------------------------------------*/
 
@@ -629,13 +831,13 @@ color: #999;
 
 
 
-/* @media screen and (min-width:768px){
+ /* @media screen and (min-width:768px){
    
-  header.container{
+.container{
     max-width:900px;
   }
 
-  main.container {
+main.container {
   max-width:900px;
   grid-template-columns:45% auto;
   grid-template-areas:
@@ -647,13 +849,10 @@ color: #999;
     ;
 }
 
-#about{
+#home, #canoe, #cabin, #river, #map{
   display:grid;
-  gap:2em;
-  grid-template-columns: 350px 1fr auto;
-  
   grid-template-areas: 
-  "nav nav nav"
+  ""
   ""
   ""
   ;
@@ -668,14 +867,20 @@ grid-area:bio
   grid-area:details;
 }
 
-.related-links{
-  grid-area:links;
+.footer{
+  grid-area:footer;
   padding-bottom:20px;
   border-bottom: 2px solid #879EBF;
 }
 
+<<<<<<< HEAD
 }
 
 @media screen and (min-width:992px){
 
 } */
+=======
+} */
+
+
+>>>>>>> e3ad6623a782e8d535388dc1925622a55f3a96e8
